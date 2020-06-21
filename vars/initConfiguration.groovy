@@ -13,8 +13,7 @@ def getParametersFromYaml(String fileName, PData){
     deleteDir()	
     checkout([$class: 'GitSCM', 
             branches: [[name: "${yaml_branch}"]],   // Regarding environment
-            userRemoteConfigs: [[url: "${yaml_repo}"]]],
-            credentialsId: "${yaml_credential}"
+            userRemoteConfigs: [[credentialsId: "${yaml_credential}", url: "${yaml_repo}"]]]
             )
     logOutput = sh returnStdout: true, script: 'git log -n 1'
     println logOutput
