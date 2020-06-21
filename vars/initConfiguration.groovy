@@ -1,15 +1,19 @@
 #!groovy
-def getParametersFromYaml(String fileName, PData){
-    // Return PData wich contains all the parametes in yaml format reading by readYaml()
-    // pipeline_yaml="${fileName}"
-    def yaml_file = 'merged_yamls_updated.yaml'
+
+def getParametersFromYaml(String pathName, String fileName){
+    // Retrive yaml file for the parametes in yaml format from Git Repository
+
+    def pipeline_yaml="${fileName}"
+    def yaml_dir = "${pathName}"
+    // def yaml_dir = 'pipeline_std/templates/example'
 
     def yaml_repo = 'git@github.com:xiaojias/devops-cicd.git'
     def yaml_credential = 'github-credential-649788479'
     def yaml_branch = 'pipeline_std'
-    def yaml_dir = 'pipeline_std/templates/example'
 
-    println "${yaml_branch}"
+    def PData
+
+    // println "${yaml_branch}"
     deleteDir()	
     checkout([$class: 'GitSCM', 
             branches: [[name: "${yaml_branch}"]],
@@ -22,7 +26,6 @@ def getParametersFromYaml(String fileName, PData){
     archiveArtifacts("${yaml_file_fullpath}")
 
     PData = readYaml(file : "${yaml_file_fullpath}")
-    // println PData
     deleteDir()    // Clean Data
     writeYaml(file : "${yaml_file}", data: PData)
 }
