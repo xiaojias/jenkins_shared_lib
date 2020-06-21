@@ -6,7 +6,7 @@ def getParametersFromYaml(String fileName, PData){
 
     def yaml_repo = 'git@github.com:xiaojias/jenkins-easc.git'
     def yaml_credential = 'credential-github-xiaojias'
-    def yaml_branch = 'pipeline_std'
+    def yaml_branch = 'master'
     def yaml_dir = 'pipeline_std/templates/example'
 
     println "${yaml_branch}"
