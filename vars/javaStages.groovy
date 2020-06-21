@@ -29,16 +29,16 @@ def stageClone(S_CLONE, m1){
                 } else {
                     logOutput = bat returnStdout: true, script: 'git log -n 1'
                 }
-                sCommit.processOut(this, logOutput)
+                // sCommit.processOut(this, logOutput)
 
-                commitData = sCommit.getAll()
-                commitHash = commitData.CommitId
-                issueLinks = sCommit.getIssueLinks()
-                branchName = "${params.branch_name}"
+                // commitData = sCommit.getAll()
+                // commitHash = commitData.CommitId
+                // issueLinks = sCommit.getIssueLinks()
+                // branchName = "${params.branch_name}"
 
-                m1.add(commitData)
-                m1.add(commitHash)
-                m1.add(issueLinks)
+                // m1.add(commitData)
+                // m1.add(commitHash)
+                // m1.add(issueLinks)
 
             } else {
                 println "Skipped the step."
