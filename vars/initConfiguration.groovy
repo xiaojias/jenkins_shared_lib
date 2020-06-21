@@ -5,6 +5,7 @@ def getParametersFromYaml(String fileName, PData){
     def yaml_file = 'merged_yamls_updated.yaml'
 
     def yaml_repo = 'ssh://git@github.com:xiaojias/devops-cicd.git'
+    def yaml_credential = 'credential-github-xiaojias'
     def yaml_branch = 'pipeline_std'
     def yaml_dir = 'pipeline_std/templates/example'
 
@@ -12,7 +13,8 @@ def getParametersFromYaml(String fileName, PData){
     deleteDir()	
     checkout([$class: 'GitSCM', 
             branches: [[name: "${yaml_branch}"]],   // Regarding environment
-            userRemoteConfigs: [[url: "${yaml_repo}"]]]
+            userRemoteConfigs: [[url: "${yaml_repo}"]]],
+            credentialsId: "${yaml_credential}"
             )
     logOutput = sh returnStdout: true, script: 'git log -n 1'
     println logOutput
