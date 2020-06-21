@@ -90,11 +90,9 @@ def stageConfigArtifactory(S_ARTICACTORY){
             println "Running stage: ${S_ARTICACTORY.name} - ${S_ARTICACTORY.description}"
             println "Stage info: ${S_ARTICACTORY}"
             println "TBD Actions !!!"
-
             } else {
                 println "Skipped the step."
             }
-
         } else {
             println "Stage Skipped."
         }
@@ -145,11 +143,9 @@ def stageTest(S_TEST){
         if (! "${S_TEST.skip}".toBoolean()){
             println "Running stage: ${S_TEST.name} - ${S_TEST.description}"
             println "Stage info: ${S_TEST}"
-
             // Involve unit_test (step name is: unit_test)
             step_name = 'unit_test'
             step_skip = false
-
             // Check if step_run depeneds on params.skip_test & steps.unit_test.skip
             if ("${params.skip_test}" != "null"){
                 step_skip = "${params.skip_test}".toBoolean()
@@ -160,10 +156,8 @@ def stageTest(S_TEST){
             if (! "${step_skip}".toBoolean()){
                 println "Running step: ${step_name} - ${S_TEST.steps.unit_test.description}"
                 println "Step info: ${S_TEST.steps.unit_test}"
-
                 // Run for junit
                 actions_count = "${S_TEST.steps.unit_test.actions.size()}"
-
                 for (int runsid = 0; runsid < "${actions_count}".toInteger(); runsid++){
                     if ( "${S_TEST.steps.unit_test.actions[runsid].execute_type}" == "junit" ){
                         // Run for junit
