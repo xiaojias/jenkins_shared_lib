@@ -80,3 +80,122 @@ def stageClone(S_CLONE, m1){
         }
     }
 }
+
+// For config_artifactory stage
+def stageConfigArtifactory(S_ARTICACTORY){
+    println "Stage data: ${S_ARTICACTORY}"
+    stage("${S_ARTICACTORY.description}"){
+        // For config_artifactory stage
+        if (! "${S_ARTICACTORY.skip}".toBoolean()){
+            println "Running stage: ${S_ARTICACTORY.name} - ${S_ARTICACTORY.description}"
+            println "Stage info: ${S_ARTICACTORY}"
+            println "TBD Actions !!!"
+
+            } else {
+                println "Skipped the step."
+            }
+
+        } else {
+            println "Stage Skipped."
+        }
+    }
+}
+
+// For get_version_number stage
+def stageGetVersionNumber(S_GETVER){
+    println "Stage data: ${S_GETVER}"
+    stage("${S_GETVER.description}"){
+        // For get_version_number stage
+        if (! "${S_GETVER.skip}".toBoolean()){
+            println "Running stage: ${S_GETVER.name} - ${S_GETVER.description}"
+            println "Stage info: ${S_GETVER}"
+            println "TBD Actions !!!"
+            } else {
+                println "Skipped the step."
+            }
+        } else {
+            println "Stage Skipped."
+        }
+    }
+}
+
+// For build stage
+def stageBuild(S_BUILD){
+    println "Stage data: ${S_BUILD}"
+    stage("${S_BUILD.description}"){
+        // For get_version_number stage
+        if (! "${S_BUILD.skip}".toBoolean()){
+            println "Running stage: ${S_BUILD.name} - ${S_BUILD.description}"
+            println "Stage info: ${S_BUILD}"
+            println "TBD Actions !!!"
+            } else {
+                println "Skipped the step."
+            }
+        } else {
+            println "Stage Skipped."
+        }
+    }
+}
+
+// For 'test' stage
+def stageTest(S_TEST){
+    // Parameters: P.stages.test
+    stage("${S_TEST.description}"){
+        // For test
+        if (! "${S_TEST.skip}".toBoolean()){
+            println "Running stage: ${S_TEST.name} - ${S_TEST.description}"
+            println "Stage info: ${S_TEST}"
+
+            // Involve unit_test (step name is: unit_test)
+            step_name = 'unit_test'
+            step_skip = false
+
+            // Check if step_run depeneds on params.skip_test & steps.unit_test.skip
+            if ("${params.skip_test}" != "null"){
+                step_skip = "${params.skip_test}".toBoolean()
+            } else {
+                step_skip = "${S_TEST.steps.unit_test.skip}".toBoolean()
+            }
+            
+            if (! "${step_skip}".toBoolean()){
+                println "Running step: ${step_name} - ${S_TEST.steps.unit_test.description}"
+                println "Step info: ${S_TEST.steps.unit_test}"
+
+                // Run for junit
+                actions_count = "${S_TEST.steps.unit_test.actions.size()}"
+
+                for (int runsid = 0; runsid < "${actions_count}".toInteger(); runsid++){
+                    if ( "${S_TEST.steps.unit_test.actions[runsid].execute_type}" == "junit" ){
+                        // Run for junit
+                        junit "${S_TEST.steps.unit_test.actions[runsid].test_file}"
+                    }
+                }                    
+
+            } else {
+                println "Skipped the step."
+            }
+
+        } else {
+            println "Stage Skipped."
+        }
+    }
+}
+
+// // Example
+// // For get_version_number stage
+// def stageGetVersionNumber(S_GETVER){
+//     println "Stage data: ${S_GETVER}"
+//     stage("${S_GETVER.description}"){
+//         // For get_version_number stage
+//         if (! "${S_GETVER.skip}".toBoolean()){
+//             println "Running stage: ${S_GETVER.name} - ${S_GETVER.description}"
+//             println "Stage info: ${S_GETVER}"
+//             println "TBD Actions !!!"
+//             } else {
+//                 println "Skipped the step."
+//             }
+//         } else {
+//             println "Stage Skipped."
+//         }
+//     }
+// }
