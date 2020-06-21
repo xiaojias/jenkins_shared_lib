@@ -8,7 +8,7 @@ def getParametersFromYaml(String fileName, PData){
     def yaml_branch = 'pipeline_std'
     def yaml_dir = 'pipeline_std/templates/example'
 
-    println "${pipeline_yaml_branch}"
+    println "${yaml_branch}"
     deleteDir()	
     checkout([$class: 'GitSCM', 
             branches: [[name: "${yaml_branch}"]],   // Regarding environment
