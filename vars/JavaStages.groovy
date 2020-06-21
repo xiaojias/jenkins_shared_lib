@@ -1,11 +1,7 @@
 #!groovy
 
 // Run stage of 'clone'
-def Clone(String stageName){
-    println "Stage info: $stageName"
-}
-
-def StageClone(S_CLONE, m1){
+def stageClone(S_CLONE, m1){
     println "Stage data: ${S_CLONE}"
     stage("${S_CLONE.description}"){
         // For clone stage
