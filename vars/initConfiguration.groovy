@@ -21,7 +21,8 @@ def getParametersFromYaml(String fileName, PData){
     def yaml_file_fullpath = "${yaml_dir}/${yaml_file}".toLowerCase()
     archiveArtifacts("${yaml_file_fullpath}")
 
-    PData = readYaml(file : "${yaml_file_fullpath}")
-    println PData
+    // PData = readYaml(file : "${yaml_file_fullpath}")
+    // println PData
     deleteDir()    // Clean Data
+    writeYaml(file : "${yaml_file_fullpath}")
 }
