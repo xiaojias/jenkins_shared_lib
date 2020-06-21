@@ -90,9 +90,6 @@ def stageConfigArtifactory(S_ARTICACTORY){
             println "Running stage: ${S_ARTICACTORY.name} - ${S_ARTICACTORY.description}"
             println "Stage info: ${S_ARTICACTORY}"
             println "TBD Actions !!!"
-            } else {
-                println "Skipped the step."
-            }
         } else {
             println "Stage Skipped."
         }
@@ -108,9 +105,6 @@ def stageGetVersionNumber(S_GETVER){
             println "Running stage: ${S_GETVER.name} - ${S_GETVER.description}"
             println "Stage info: ${S_GETVER}"
             println "TBD Actions !!!"
-            } else {
-                println "Skipped the step."
-            }
         } else {
             println "Stage Skipped."
         }
@@ -126,9 +120,6 @@ def stageBuild(S_BUILD){
             println "Running stage: ${S_BUILD.name} - ${S_BUILD.description}"
             println "Stage info: ${S_BUILD}"
             println "TBD Actions !!!"
-            } else {
-                println "Skipped the step."
-            }
         } else {
             println "Stage Skipped."
         }
