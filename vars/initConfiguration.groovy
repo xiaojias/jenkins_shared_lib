@@ -4,7 +4,7 @@ def getParametersFromYaml(String fileName, PData){
     // pipeline_yaml="${fileName}"
     def yaml_file = 'merged_yamls_updated.yaml'
 
-    def yaml_repo = 'ssh://git@github.com:xiaojias/devops-cicd.git'
+    def yaml_repo = 'git@github.com:xiaojias/jenkins-easc.git'
     def yaml_credential = 'credential-github-xiaojias'
     def yaml_branch = 'pipeline_std'
     def yaml_dir = 'pipeline_std/templates/example'
