@@ -3,7 +3,7 @@
 def getParametersFromYaml(String pathName, String fileName){
     // Retrive yaml file for the parametes in yaml format from Git Repository
 
-    def pipeline_yaml="${fileName}"
+    def yaml_file="${fileName}"
     def yaml_dir = "${pathName}"
     // def yaml_dir = 'pipeline_std/templates/example'
 
