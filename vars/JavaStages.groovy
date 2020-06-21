@@ -1,3 +1,5 @@
+#!groovy
+
 // Run stage of 'clone'
 def Clone(String stageName){
     println "Stage info: $stageName"
