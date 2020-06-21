@@ -17,10 +17,10 @@ def getParametersFromYaml(String fileName, PData){
             )
     logOutput = sh returnStdout: true, script: 'git log -n 1'
     println logOutput
-    deleteDir()
-
+    
     def yaml_file_fullpath = "${yaml_dir}/${yaml_file}".toLowerCase()
     archiveArtifacts("${yaml_file_fullpath}")
+    deleteDir()
 
     PData = readYaml(file : "${yaml_file_fullpath}")
     println PData
