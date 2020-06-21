@@ -24,5 +24,5 @@ def getParametersFromYaml(String fileName, PData){
     PData = readYaml(file : "${yaml_file_fullpath}")
     // println PData
     deleteDir()    // Clean Data
-    writeYaml(file : "${yaml_file_fullpath}", data: PData)
+    writeYaml(file : "${yaml_file}", data: PData)
 }
