@@ -97,7 +97,7 @@ def stageConfigArtifactory(S_ARTICACTORY){
 }
 
 // For get_version_number stage
-def stageGetVersionNumber(S_GETVER){
+def stageGetVersionNumber(S_GETVER, appName){
     println "Stage data: ${S_GETVER}"
     stage("${S_GETVER.description}"){
         // For get_version_number stage
